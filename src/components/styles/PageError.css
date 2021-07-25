@@ -1,0 +1,13 @@
+.PageError {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    width: 100%;
+}
+
+.PageError p {
+    color: red;
+    font-size: 4rem;
+}
