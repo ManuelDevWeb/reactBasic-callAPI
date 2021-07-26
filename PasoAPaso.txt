@@ -49,3 +49,5 @@
 20. Crear el archivo: src/components/styles/Modal.css
 
 21. Crear el componente: src/componente/DeleteBadgeModal.js
+
+22. Realizar el filtrador de busqueda en BadgesList.js
