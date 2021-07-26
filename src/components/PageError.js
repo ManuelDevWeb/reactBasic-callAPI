@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 //Importando estilos
-import './styles/PageError.css';
+import "./styles/PageError.css";
 
 //Creando componente
 const PageError = (props) => {
@@ -8,9 +8,9 @@ const PageError = (props) => {
 
     return (
         <div className="PageError">
-            <p>❌{error.message}❌</p>
+            <p>{error.message}</p>
         </div>
     );
-}
+};
 
 export default PageError;

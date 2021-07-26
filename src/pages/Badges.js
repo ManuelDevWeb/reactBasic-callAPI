@@ -9,7 +9,9 @@ import BadgesList from "../components/BadgesList";
 //Importando archivo api
 import api from "../api";
 //Importando componente PageLoading
-import PageLoading from '../components/PageLoading';
+import PageLoading from "../components/PageLoading";
+//Importando componente MiniLoader
+import MiniLoader from "../components/MiniLoader";
 //Importando componente PageError
 import PageError from "../components/PageError";
 
@@ -24,6 +26,14 @@ class Badges extends React.Component {
   //Componente Montado
   componentDidMount() {
     this.fetchData();
+
+    //Actualizaciones automáticas (Cada cierto tiempo)
+    this.intervalId = setInterval(this.fetchData, 5000);
+  }
+
+  componentWillUnmount() {
+    //Limpiando intervalo
+    clearInterval(this.intervalId);
   }
 
   fetchData = async () => {
@@ -38,8 +48,8 @@ class Badges extends React.Component {
   };
 
   render() {
-    //Se ejecuta cuando esta en estado loading
-    if (this.state.loading === true) {
+    //Se ejecuta cuando esta en estado loading, solo al inicio de la página y no hay datos
+    if (this.state.loading === true && !this.state.data) {
       return <PageLoading />;
     }
 
@@ -67,7 +77,11 @@ class Badges extends React.Component {
               New Badge{" "}
             </Link>{" "}
           </div>{" "}
-          <BadgesList badges={this.state.data} />{" "}
+          <BadgesList badges={this.state.data} />
+          {
+            //Si loading es true mostramos el loader
+            this.state.loading && <MiniLoader />
+          }
         </div>{" "}
       </React.Fragment>
     );

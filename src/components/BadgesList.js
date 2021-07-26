@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './styles/BadgesList.css';
+import "./styles/BadgesList.css";
 //Importando Gravatar
-import Gravatar from '../components/Gravatar';
+import Gravatar from "../components/Gravatar";
 
 class BadgesListItem extends React.Component {
   render() {
@@ -45,10 +45,15 @@ class BadgesList extends React.Component {
     return (
       <div className="BadgesList">
         <ul className="list-unstyled">
-          {this.props.badges.map(badge => {
+          {this.props.badges.map((badge) => {
             return (
               <li key={badge.id}>
-                <BadgesListItem badge={badge} />
+                <Link
+                  className="text-reset text-decoration-none"
+                  to={`/badges/${badge.id}`}
+                >
+                  <BadgesListItem badge={badge} />
+                </Link>
               </li>
             );
           })}
